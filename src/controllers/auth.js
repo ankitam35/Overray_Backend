@@ -48,7 +48,7 @@ const loginUser = async (loginData) => {
   if (!user) return { message: "User not found", error: true };
 
   if (loginData.password === GENERIC_PASSWORD_STR) {
-    user.password = loginData.password;
+    user = { ...user, password: loginData.password };
   }
 
   const isPasswordValid = await bcrypt.compare(
